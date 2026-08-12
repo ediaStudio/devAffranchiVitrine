@@ -3,119 +3,232 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dev Affranchi</title>
+<title>Dev Affranchi · Créer, monétiser et lancer des apps mobiles</title>
+<meta name="description" content="Je t'aide à créer, monétiser et lancer de vraies applications mobiles. Groupe gratuit, appels de groupe hebdomadaires, vidéos et consulting.">
+<meta property="og:title" content="Dev Affranchi">
+<meta property="og:description" content="Créer, monétiser et lancer de vraies apps mobiles. Sans bullshit.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0b0a1a">
 <link rel="icon" type="image/png" href="assets/avatar.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body { height: 100%; }
-  body {
-    font-family: 'Karla', -apple-system, 'Segoe UI', sans-serif;
-    background-color: #EDF5FE;
-    background-image: url('assets/background.svg');
-    background-repeat: no-repeat;
-    background-position: 0% 100%;
-    background-size: auto;
-    -webkit-font-smoothing: antialiased;
+  :root{
+    --bg:#0b0a1a;
+    --card:rgba(255,255,255,0.04);
+    --card-hover:rgba(255,255,255,0.07);
+    --line:rgba(255,255,255,0.10);
+    --text:#f4f2fb;
+    --muted:#a9a4c4;
+    --violet:#9333ea;
+    --magenta:#ec4899;
+    --cyan:#22d3ee;
   }
-  .page {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 56px 20px 40px;
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:'Space Grotesk',-apple-system,'Segoe UI',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+    position:relative;
+    overflow-x:hidden;
   }
-  .avatar-wrap {
-    border-radius: 50%;
-    box-shadow: 0 0 0 4px rgba(147, 51, 234, 0.30), 0 0 28px rgba(236, 72, 153, 0.45);
+  /* halos d'ambiance */
+  body::before,body::after{
+    content:"";
+    position:fixed;
+    border-radius:50%;
+    filter:blur(90px);
+    z-index:0;
+    pointer-events:none;
   }
-  .avatar {
-    display: block;
-    width: 108px;
-    height: 108px;
-    border-radius: 50%;
+  body::before{
+    width:520px;height:520px;
+    background:radial-gradient(circle,rgba(147,51,234,0.40),transparent 70%);
+    top:-160px;left:-140px;
   }
-  .title {
-    margin-top: 18px;
-    font-size: 30px;
-    font-weight: 700;
-    color: #111111;
-    text-align: center;
+  body::after{
+    width:480px;height:480px;
+    background:radial-gradient(circle,rgba(34,211,238,0.28),transparent 70%);
+    bottom:-180px;right:-140px;
   }
-  .bio {
-    margin-top: 8px;
-    font-size: 18px;
-    font-weight: 400;
-    color: #333333;
-    line-height: 24px;
-    text-align: center;
+  .page{
+    position:relative;
+    z-index:1;
+    max-width:560px;
+    margin:0 auto;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:clamp(48px,9vw,80px) 20px 56px;
   }
-  .links {
-    width: min(470px, 92vw);
-    margin-top: 26px;
+  .avatar-wrap{
+    border-radius:50%;
+    padding:4px;
+    background:linear-gradient(135deg,var(--cyan),var(--violet),var(--magenta));
+    box-shadow:0 0 40px rgba(147,51,234,0.35);
   }
-  .links a {
-    display: block;
-    background: #FFFFFF;
-    border: 2px solid rgba(1, 77, 130, 0);
-    border-radius: 4px;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 5px 0px;
-    padding: 14px 90px;
-    margin-bottom: 24px;
-    text-align: center;
-    text-decoration: none;
-    color: #000000;
-    transition: transform .12s ease, box-shadow .12s ease;
+  .avatar{
+    display:block;
+    width:120px;height:120px;
+    border-radius:50%;
+    border:3px solid var(--bg);
   }
-  .links a:hover {
-    transform: translateY(-2px);
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 4px 12px 0px;
+  .title{
+    margin-top:20px;
+    font-size:clamp(28px,7vw,34px);
+    font-weight:700;
+    letter-spacing:-.02em;
+    text-align:center;
   }
-  .links a:last-child { margin-bottom: 0; }
-  .link-icon {
-    display: block;
-    font-size: 28px;
-    line-height: 1.2;
-    margin-bottom: 4px;
+  .bio{
+    margin-top:10px;
+    font-size:17px;
+    font-weight:400;
+    color:var(--muted);
+    line-height:1.5;
+    text-align:center;
+    max-width:34ch;
   }
-  .link-title {
-    display: block;
-    font-size: 18px;
-    font-weight: 700;
-    color: #000000;
+  .bio strong{color:var(--text);font-weight:500}
+  .links{
+    width:100%;
+    margin-top:36px;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
   }
-  .link-sub {
-    display: block;
-    margin-top: 2px;
-    font-size: 15px;
-    font-weight: 400;
-    color: #555555;
+  .link{
+    position:relative;
+    display:flex;
+    align-items:center;
+    gap:16px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:18px 20px;
+    text-decoration:none;
+    color:var(--text);
+    transition:transform .14s ease,background .14s ease,border-color .14s ease;
+    backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
   }
-  @media (max-width: 520px) {
-    .links a { padding: 14px 24px; }
-    .page { padding-top: 40px; }
+  .link:hover{
+    transform:translateY(-2px);
+    background:var(--card-hover);
+    border-color:rgba(255,255,255,0.20);
   }
+  .link:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+  /* liens mis en avant */
+  .link.featured{
+    border-color:transparent;
+    background:
+      linear-gradient(var(--bg),var(--bg)) padding-box,
+      linear-gradient(135deg,var(--violet),var(--magenta)) border-box;
+    border:1.5px solid transparent;
+  }
+  .link.featured:hover{background:
+      linear-gradient(#141228,#141228) padding-box,
+      linear-gradient(135deg,var(--violet),var(--magenta)) border-box;}
+  .ico{
+    flex:0 0 auto;
+    width:46px;height:46px;
+    border-radius:12px;
+    display:grid;
+    place-items:center;
+    font-size:22px;
+    background:rgba(255,255,255,0.06);
+  }
+  .ico img{width:30px;height:30px;object-fit:contain;display:block}
+  .ico.skool{background:linear-gradient(135deg,rgba(147,51,234,0.25),rgba(236,72,153,0.25))}
+  .ico.lab{background:linear-gradient(135deg,#1b2a4a,#0f1830)}
+  .txt{flex:1;min-width:0}
+  .lab-title{
+    display:block;
+    font-size:17px;
+    font-weight:600;
+    letter-spacing:-.01em;
+  }
+  .lab-sub{
+    display:block;
+    margin-top:3px;
+    font-size:14px;
+    font-weight:400;
+    color:var(--muted);
+    line-height:1.35;
+  }
+  .badge{
+    flex:0 0 auto;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    padding:5px 10px;
+    border-radius:999px;
+  }
+  .badge.free{background:rgba(34,211,238,0.14);color:var(--cyan)}
+  .badge.paid{background:rgba(236,72,153,0.16);color:#f9a8d4}
+  .arrow{flex:0 0 auto;color:var(--muted);font-size:18px;transition:transform .14s ease}
+  .link:hover .arrow{transform:translateX(3px);color:var(--text)}
+  footer{
+    margin-top:40px;
+    font-size:13px;
+    color:var(--muted);
+    text-align:center;
+  }
+  @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
   <div class="page">
     <div class="avatar-wrap">
-      <img class="avatar" src="assets/avatar.png" alt="@DevAffranchi">
+      <img class="avatar" src="assets/avatar.png" alt="Dev Affranchi">
     </div>
-    <h1 class="title">@DevAffranchi</h1>
-    <p class="bio">Je t'aide à créer des applications mobiles</p>
-    <div class="links">
-      <a href="https://tidycal.com/dha/consulting">
-        <span class="link-icon">📞</span>
-        <span class="link-title">Consulting privé</span>
+    <h1 class="title">Dev Affranchi</h1>
+    <p class="bio">Je t'aide à <strong>créer, monétiser et lancer</strong> de vraies applications mobiles. Sans bullshit.</p>
+
+    <nav class="links">
+      <a class="link featured" href="https://www.skool.com/les-devs-affranchis-6824" rel="noopener">
+        <span class="ico skool">🚀</span>
+        <span class="txt">
+          <span class="lab-title">Le groupe Mobile Lab</span>
+          <span class="lab-sub">La communauté gratuite pour se lancer et progresser</span>
+        </span>
+        <span class="badge free">Gratuit</span>
       </a>
-      <a href="https://www.youtube.com/@DevAffranchi">
-        <span class="link-icon">▶️</span>
-        <span class="link-title">Youtube Dev Affranchi</span>
+
+      <a class="link featured" href="https://ai.devaffranchi.com/" rel="noopener">
+        <span class="ico lab"><img src="assets/mobilelab-logo.png" alt=""></span>
+        <span class="txt">
+          <span class="lab-title">Les appels de groupe du samedi</span>
+          <span class="lab-sub">On passe ton app au crible en direct, chaque semaine</span>
+        </span>
+        <span class="badge paid">29€/mois</span>
       </a>
-    </div>
+
+      <a class="link" href="https://www.youtube.com/@DevAffranchi" rel="noopener">
+        <span class="ico">▶️</span>
+        <span class="txt">
+          <span class="lab-title">YouTube</span>
+          <span class="lab-sub">Mes vidéos sur le dev mobile et l'indépendance par le code</span>
+        </span>
+        <span class="arrow">→</span>
+      </a>
+
+      <a class="link" href="https://tidycal.com/dha/consulting" rel="noopener">
+        <span class="ico">📞</span>
+        <span class="txt">
+          <span class="lab-title">Consulting privé</span>
+          <span class="lab-sub">Un appel en tête à tête sur ton projet</span>
+        </span>
+        <span class="arrow">→</span>
+      </a>
+    </nav>
+
+    <footer>Dev Affranchi</footer>
   </div>
 </body>
 </html>
