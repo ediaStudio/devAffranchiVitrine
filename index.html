@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dev Affranchi · Créer, monétiser et lancer des apps mobiles</title>
-<meta name="description" content="Je t'aide à créer, monétiser et lancer de vraies applications mobiles. Groupe gratuit, appels de groupe hebdomadaires, vidéos et consulting.">
+<meta name="description" content="Je t'aide à créer, monétiser et lancer de vraies applications mobiles. Calls hebdo, vidéos et consulting.">
 <meta property="og:title" content="Dev Affranchi">
 <meta property="og:description" content="Créer, monétiser et lancer de vraies apps mobiles. Sans bullshit.">
 <meta property="og:type" content="website">
@@ -173,6 +173,59 @@
   .badge.paid{background:rgba(236,72,153,0.16);color:#f9a8d4}
   .arrow{flex:0 0 auto;color:var(--muted);font-size:18px;transition:transform .14s ease}
   .link:hover .arrow{transform:translateX(3px);color:var(--text)}
+  /* encart Calls hebdo : même bloc que sur dha-expat.com */
+  .skool{
+    width:100%;
+    display:flex;
+    gap:16px;
+    align-items:flex-start;
+    margin-top:26px;
+    text-decoration:none;
+    color:var(--text);
+    border-radius:18px;
+    padding:20px;
+    background:
+      radial-gradient(560px 200px at 100% 0%, rgba(236,72,153,0.20) 0%, rgba(236,72,153,0) 55%),
+      linear-gradient(135deg,#151129 0%,#1e1436 100%);
+    border:1px solid rgba(255,255,255,0.12);
+    box-shadow:0 18px 44px rgba(0,0,0,0.45);
+    position:relative;
+    overflow:hidden;
+    transition:transform .18s ease,box-shadow .18s ease;
+  }
+  .skool::after{
+    content:"";
+    position:absolute;inset:0;
+    background:linear-gradient(120deg,rgba(255,255,255,0.08),rgba(255,255,255,0) 40%);
+    pointer-events:none;
+  }
+  .skool:hover{transform:translateY(-3px);box-shadow:0 24px 54px rgba(0,0,0,0.55)}
+  .skool__badge{
+    flex:0 0 auto;width:52px;height:52px;border-radius:14px;
+    background:linear-gradient(135deg,var(--violet),var(--magenta));
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-size:20px;
+    box-shadow:0 8px 18px rgba(236,72,153,0.40);
+  }
+  .skool__badge svg{width:24px;height:24px;display:block}
+  .skool__body{display:flex;flex-direction:column;min-width:0}
+  .skool__tag{
+    display:inline-block;align-self:flex-start;
+    font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
+    color:#f9a8d4;background:rgba(236,72,153,0.14);
+    border:1px solid rgba(236,72,153,0.35);
+    padding:3px 9px;border-radius:999px;margin-bottom:8px;
+  }
+  .skool__title{font-size:19px;font-weight:700;letter-spacing:-.01em;line-height:1.25;margin-bottom:6px}
+  .skool__text{font-size:14px;line-height:1.45;color:var(--muted);margin-bottom:14px}
+  .skool__cta{
+    display:inline-flex;align-items:center;gap:8px;align-self:flex-start;
+    font-size:15px;font-weight:600;color:var(--bg);background:#fff;
+    padding:10px 16px;border-radius:10px;
+    transition:gap .18s ease,background .18s ease;
+  }
+  .skool__cta svg{width:15px;height:15px}
+  .skool:hover .skool__cta{gap:12px;background:#f3e8ff}
   footer{
     margin-top:40px;
     font-size:13px;
@@ -190,25 +243,17 @@
     <h1 class="title">Dev Affranchi</h1>
     <p class="bio">Je t'aide à <strong>créer, monétiser et lancer</strong> de vraies applications mobiles. Sans bullshit.</p>
 
+    <a class="skool" href="https://ai.devaffranchi.com/" target="_blank" rel="noopener">
+      <span class="skool__badge"><svg viewBox="0 0 640 512" fill="currentColor" aria-hidden="true"><path d="M0 128C0 92.7 28.7 64 64 64H320c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128zM559.1 99.8c10.4 5.6 16.9 16.4 16.9 28.4V383.8c0 12-6.5 22.8-16.9 28.4s-23 5-33.4-.9L400 349.3V162.7L525.7 100.7c10.4-5.8 23-6.4 33.4-.9z"/></svg></span>
+      <span class="skool__body">
+        <span class="skool__tag">Calls hebdo</span>
+        <span class="skool__title">Ton projet avance, où que tu en sois</span>
+        <span class="skool__text">Idée pas encore lancée, MVP en chantier ou produit qui rame, peu importe. Chaque samedi, 90 minutes en direct avec moi, on regarde où tu en es et tu repars avec ta prochaine étape claire.</span>
+        <span class="skool__cta">Réserver ma place <svg viewBox="0 0 448 512" fill="currentColor" aria-hidden="true"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg></span>
+      </span>
+    </a>
+
     <nav class="links">
-      <a class="link featured" href="https://www.skool.com/les-devs-affranchis-6824" rel="noopener">
-        <span class="ico skool">🚀</span>
-        <span class="txt">
-          <span class="lab-title">Le groupe Mobile Lab</span>
-          <span class="lab-sub">La communauté gratuite pour se lancer et progresser</span>
-        </span>
-        <span class="badge free">Gratuit</span>
-      </a>
-
-      <a class="link featured" href="https://ai.devaffranchi.com/" rel="noopener">
-        <span class="ico lab"><img src="assets/mobilelab-logo.png" alt=""></span>
-        <span class="txt">
-          <span class="lab-title">Les appels de groupe du samedi</span>
-          <span class="lab-sub">On passe ton app au crible en direct, chaque semaine</span>
-        </span>
-        <span class="badge paid">29€/mois</span>
-      </a>
-
       <a class="link" href="https://www.youtube.com/@DevAffranchi" rel="noopener">
         <span class="ico">▶️</span>
         <span class="txt">
